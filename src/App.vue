@@ -9,7 +9,7 @@
           class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-4 col-xs-12 ps-16 pe-16"
           align-self="center"
         >
-          <input-item @submit="onSubmit" label="Input"></input-item>
+          <input-item @change="onchange" label="Input"></input-item>
         </v-col>
         <v-col
           class="col-lg-4 col-md-12col-sm-12 col-xs-12 ps-16 pe-16"
@@ -18,14 +18,14 @@
           <select-item
             label="select"
             :multiple="true"
-            @submit="onSubmit"
+            @change="onchange"
             :options="['John', 'Fitzgerald', 'Kenedy']"
           />
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " align-self="auto">
-          <v-btn color="primary" @click="getResult">submit</v-btn>
+          <button-item label="SUBMIT" @click="getResult">change</button-item>
         </v-col>
       </v-row>
     </v-main>
@@ -35,6 +35,8 @@
 <script>
 import InputItem from "./components/items/InputItem";
 import SelectItem from "./components/items/SelectItem";
+import ButtonItem from "./components/items/buttons/ButtonItem";
+
 
 export default {
   name: "App",
@@ -42,13 +44,14 @@ export default {
   components: {
     InputItem,
     SelectItem,
+    ButtonItem
   },
 
   data: () => ({
     result: {},
   }),
   methods: {
-    onSubmit: function(label, input) {
+    onchange: function(label, input) {
       this.result[label] = input;
     },
     getResult() {

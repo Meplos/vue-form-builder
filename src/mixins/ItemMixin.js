@@ -9,13 +9,16 @@ const ItemMixin = {
     model: [],
   }),
   methods: {
-    submit: function() {
-      this.$emit("submit", this.label, this.model);
+    change: function() {
+      this.$emit("change", this.label, this.model);
     },
+    click: function () {
+      this.$emit("click");
+    }
   },
   watch: {
     model: function() {
-      this.submit();
+      this.change();
     },
   },
 };
